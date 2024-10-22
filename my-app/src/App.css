@@ -37,7 +37,7 @@ body {
   display: flex;
   cursor: pointer;
   align-items: center; /* Align items vertically */
-  gap: 30px;
+  gap: 20px;
   padding-left: 2px;
   padding-right: 2px;
 }
@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: row; /* Align items horizontally */
   align-items: center; /* Center vertically */
-  gap: 30px;
+  gap: 50px;
 }
 
 /* Dropdown Container Styles */

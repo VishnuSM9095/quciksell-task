@@ -28,6 +28,7 @@ const App = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Close the dropdown if the click is outside of it
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
@@ -38,10 +39,11 @@ const App = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, []);
 
-  const toggleDropdown = () => {
-    setDropdownOpen(prevState => !prevState);
+  const toggleDropdown = (event) => {
+    event.stopPropagation(); // Prevent click from propagating to document
+    setDropdownOpen(prevState => !prevState); // Toggle dropdown state
   };
 
   return (
