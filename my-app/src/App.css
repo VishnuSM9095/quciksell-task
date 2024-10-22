@@ -205,10 +205,7 @@ select {
   flex-direction: row;
 
 }
-.card-icon{
-  border: 1px solid rgb(146, 144, 144);
-  border-radius: 10px;
-}
+
 .tag-button {
   display: inline-flex;
   align-items: center;

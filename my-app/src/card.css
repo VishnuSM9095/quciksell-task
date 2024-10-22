@@ -63,7 +63,10 @@
     border-radius: 5px;
     font-size: 12px;
   }
-  
+  .tag-button img{
+    height: 10px;
+    width: 10px;
+  }
   .card-tag {
     display: flex;
     align-items: center;

@@ -29,7 +29,17 @@ const Board = ({ tickets, users, groupBy, sortBy }) => {
     return acc;
   }, {});
 
-  const orderedKeys = groupBy === 'priority' ? ['0', '4', '3', '2', '1'] : Object.keys(sortedGroupedTickets);
+  // Ensure "Done" and "Cancelled" columns are always present
+  if (!sortedGroupedTickets["Done"]) {
+    sortedGroupedTickets["Done"] = [];
+  }
+  if (!sortedGroupedTickets["Cancelled"]) {
+    sortedGroupedTickets["Cancelled"] = [];
+  }
+
+  const orderedKeys = groupBy === 'priority' 
+    ? ['0', '4', '3', '2', '1'] 
+    : Object.keys(sortedGroupedTickets);
 
   return (
     <div className="board">
@@ -44,8 +54,19 @@ const Board = ({ tickets, users, groupBy, sortBy }) => {
           : 'Urgent'
           : group;
 
+        const groupData = groupBy === 'user'
+          ? users.find(user => user.id === group)
+          : { name: groupLabel };
+
         return (
-          <Column key={group} group={groupLabel} tickets={sortedGroupedTickets[group]} />
+          <Column 
+            key={group} 
+            group={groupLabel} 
+            tickets={sortedGroupedTickets[group]} 
+            groupBy={groupBy} 
+            users={users} 
+            groupData={groupData}
+          />
         );
       })}
     </div>
