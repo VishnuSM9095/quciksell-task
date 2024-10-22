@@ -37,6 +37,9 @@ body {
   display: flex;
   cursor: pointer;
   align-items: center; /* Align items vertically */
+  gap: 30px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 /* Dropdown Menu Styles */
@@ -56,6 +59,7 @@ body {
 
 /* Dropdown Section Styles */
 .dropdown-section {
+  
   margin-bottom: 10px; /* Space between sections */
   display: flex;
   flex-direction: row; /* Align items horizontally */
@@ -65,9 +69,14 @@ body {
 
 /* Dropdown Container Styles */
 .dropdown-container {
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: #666;
   display: flex;
   flex-direction: column; /* Stack options vertically */
   position: relative; /* Needed for absolute positioning of options */
+  gap: 20px;
 }
 
 /* Dropdown Select Styles */
@@ -99,8 +108,11 @@ body {
 
 /* Individual Dropdown Option Styles */
 .dropdown-option {
-  padding: 8px; /* Padding for each option */
+  display: flex;
+  padding: 3px; /* Padding for each option */
   cursor: pointer; /* Change cursor to pointer */
+  gap: 30px;
+
 }
 
 /* Hover effect for dropdown options */
