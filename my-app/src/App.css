@@ -1,0 +1,62 @@
+/* src/styles.css */
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* App styles */
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Controls styles */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select {
+  margin-left: 10px;
+}
+
+/* Board styles */
+.board {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Column styles */
+.column {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  width: 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Card styles */
+.card {
+  background-color: #eaeaea;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card h4 {
+  margin: 0;
+}
+
+.card p {
+  margin: 5px 0;
+}
