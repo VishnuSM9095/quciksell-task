@@ -9,10 +9,117 @@ body {
 
 /* App styles */
 .App {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
+/* App.css */
+
+/* App.css */
+
+/* Navbar Styles */
+/* App.css */
+
+/* Navbar Styles */
+/* App.css */
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  position: relative; /* Needed for dropdown positioning */
+}
+
+/* Navbar Item Styles */
+.navbar-item {
+  display: flex;
+  cursor: pointer;
+  align-items: center; /* Align items vertically */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute; /* Position it absolutely */
+  top: 50px; /* Adjust as needed to space from navbar */
+  left: 10px; /* Align with left of navbar item */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 5px; /* Rounded corners for better aesthetics */
+}
+
+/* Dropdown Section Styles */
+.dropdown-section {
+  margin-bottom: 10px; /* Space between sections */
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  align-items: center; /* Center vertically */
+  gap: 30px;
+}
+
+/* Dropdown Container Styles */
+.dropdown-container {
+  display: flex;
+  flex-direction: column; /* Stack options vertically */
+  position: relative; /* Needed for absolute positioning of options */
+}
+
+/* Dropdown Select Styles */
+.dropdown-container select {
+  width: 200px; /* Fixed width for dropdowns */
+  padding: 8px; /* Padding for dropdown */
+  border: 1px solid #ccc; /* Border for select */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Dropdown Options */
+.dropdown-options {
+  display: none; /* Hidden by default */
+  position: absolute; /* Position options absolutely */
+  top: 35px; /* Position below the select */
+  left: 0; /* Align with left of select */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; /* Rounded corners */
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Show options when container is open */
+.dropdown-container.active .dropdown-options {
+  display: block; /* Show options when active */
+}
+
+/* Individual Dropdown Option Styles */
+.dropdown-option {
+  padding: 8px; /* Padding for each option */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Hover effect for dropdown options */
+.dropdown-option:hover {
+  background-color: #e0e0e0; /* Light grey on hover */
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+  margin-left: 10px; /* Space between text and icon */
+  transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+/* Arrow Rotation */
+.rotated {
+  transform: rotate(180deg); /* Rotate the arrow */
+}
+
+
 
 /* Controls styles */
 .controls {
@@ -81,6 +188,30 @@ select {
   margin: 0;
 }
 
-.card p {
-  margin: 5px 0;
+.subcard{
+  display: flex;
+  flex-direction: row;
+
+}
+.card-icon{
+  border: 1px solid rgb(146, 144, 144);
+  border-radius: 10px;
+}
+.tag-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.tag-icon {
+  width: 12px;
+  height: 12px;
+  
+  fill: #666;
 }
