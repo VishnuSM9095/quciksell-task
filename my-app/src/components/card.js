@@ -1,16 +1,24 @@
+// src/components/Card.js
+
 import React from 'react';
 import '../../src/App.css';
 
-const priorityLabels = ['No Priority', 'Low', 'Medium', 'High', 'Urgent'];
-
 const Card = ({ ticket }) => {
+  const { id, title } = ticket;
+
+  // Function to truncate the title
+  const truncateTitle = (title) => {
+    if (title.length > 30) {
+      return title.slice(0, 30) + '...'; // Adjust the number to control the cut-off point
+    }
+    return title;
+  };
+
   return (
     <div className="card">
-      <h3>{ticket.title}</h3>
-      <p><strong>Status:</strong> {ticket.status}</p>
-      <p><strong>User:</strong> {ticket.userId}</p>
-      <p><strong>Priority:</strong> {priorityLabels[ticket.priority] || 'No Priority'}</p>
-      <p><strong>Tags:</strong> {ticket.tag.join(', ')}</p>
+      <div className="card-id">{id}</div>
+      <div className="card-title">{truncateTitle(title)}</div>
+      
     </div>
   );
 };

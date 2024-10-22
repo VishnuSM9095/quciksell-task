@@ -31,28 +31,52 @@ select {
 
 /* Board styles */
 .board {
+  background-color: #f4f6fa;
   display: flex;
   justify-content: space-between;
 }
 
 /* Column styles */
 .column {
-  background-color: #fff;
+  background-color: #ffffff00;
   border-radius: 5px;
   padding: 10px;
   margin-right: 10px;
   width: 30%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Card styles */
 .card {
-  background-color: #eaeaea;
-  border-radius: 3px;
-  padding: 10px;
-  margin-bottom: 10px;
+  background-color: white;
+  width: 40vh; /* Set width to 80px */
+  height: 15vh; /* Set height to 40px */
+  border: 1px solid #f0ebeb; /* Optional: add a border for visibility */
+  border-radius: 4px; /* Optional: add rounded corners */
+  padding: 5px; /* Add some padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  overflow: hidden; /* Ensure overflow is hidden */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(110, 109, 109, 0.1);
+  
 }
 
+.card-id {
+  font-size: 12px; /* Smaller font size for the ID */
+  color: #666; /* Lighter color for the ID */
+  margin-bottom: 2px; /* Space between ID and title */
+}
+
+.card-title {
+  font-size: 14px; /* Font size for the title */
+  white-space: nowrap; /* Prevent title from wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflow */
+}
+.ft{
+  border: #666;
+}
 .card h4 {
   margin: 0;
 }
