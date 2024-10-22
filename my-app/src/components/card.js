@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import '../text.css';
 import grey from '../components/icons_FEtask/greyy.svg';
 import todo from '../components/icons_FEtask/To-do.svg';
 import progresss from '../components/icons_FEtask/in-progress.svg';
@@ -34,34 +35,41 @@ const priorityIcons = {
 };
 
 const userProfiles = {
-  'SK': SK,
-  'S': S,
-  'Y': Y,
-  'R': R,
-  'A': A
+  'Shankar Kumar': SK,
+  'Suresh': S,
+  'Yogesh': Y,
+  'Ramesh': R,
+  'Anoop sharma': A
 };
 
 const Card = ({ ticket, groupBy, users }) => {
   const user = users.find(user => user.id === ticket.userId);
   const statusIcon = statusIcons[ticket.status];
-  const userProfile = userProfiles[user?.profile];
+  const userProfile = userProfiles[user?.name] || grey;
   const priorityIcon = priorityIcons[ticket.priority];
 
   return (
     <div className="card">
       <div className="card-id">
-        {ticket.id}
-        {groupBy !== 'user' && userProfile && <img src={userProfile} alt={user?.name} className="user-icon" />}
+        <span className="ticket-id">{ticket.id}</span>
+        {groupBy !== 'user' && userProfile && (
+          <div className="user-info">
+            <img src={userProfile} alt={user?.name} className="user-profile" />
+            <span className={`availability ${user?.available ? 'available' : 'unavailable'}`}></span>
+          </div>
+        )}
       </div>
       <div className="card-title">
-        {groupBy === 'priority' && statusIcon && <img src={statusIcon} alt={ticket.status} />}
-        {ticket.title.length > 40 ? `${ticket.title.substring(0, 40)}...` : ticket.title}
+        {/* Show the status icon for user grouping or priority grouping */}
+        {(groupBy === 'user' || groupBy === 'priority') && statusIcon && <img src={statusIcon} alt={ticket.status} className="status-icon" />}
+        <span className="title-text">{ticket.title}</span>
       </div>
       <div className="subcard">
-        {groupBy === 'status' && priorityIcon && <img src={priorityIcon} alt={ticket.priority} className="priority-icon" />}
+        {/* Show the priority icon for user grouping or status grouping */}
+        {(groupBy === 'user' || groupBy === 'status') && priorityIcon && <img src={priorityIcon} alt={ticket.priority} className="priority-icon" />}
         {ticket.tag.includes('Feature Request') && (
           <div className="tag-button">
-            <img src={grey} alt='greydot'></img>
+            <img src={grey} alt='greydot' />
             <span>Feature Request</span>
           </div>
         )}

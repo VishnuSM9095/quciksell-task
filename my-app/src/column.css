@@ -1,4 +1,92 @@
+
 .column-header{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+}
+.column-header h2{
+    font-size: small;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.user-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+.user-profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.availability {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.available {
+    background-color: green;
+}
+
+.unavailable {
+    background-color: lightgrey;
+}
+
+.user-info {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+}
+
+.subcard {
+    display: flex;
+    align-items: center;
+}
+.user-profile {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px; /* Optional: add space between the profile picture and the title */
+}
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.ticket-count{
+    color: grey;
+    font-family: Roboto;
+    margin-left: 10px;
+}
+
+.right-set{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.right-set img{
+    height: 20px;
+    width: 20px;
+}
+.head-col{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }

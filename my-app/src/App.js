@@ -9,18 +9,28 @@ import down from './components/icons_FEtask/down.svg';
 const App = () => {
   const [tickets, setTickets] = useState([]);
   const [users, setUsers] = useState([]);
-  const [groupBy, setGroupBy] = useState('status');
-  const [sortBy, setSortBy] = useState('priority');
+  const [groupBy, setGroupBy] = useState(localStorage.getItem('groupBy') || 'status');
+  const [sortBy, setSortBy] = useState(localStorage.getItem('sortBy') || 'priority');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(true); // Loading state
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment');
-      const data = await response.json();
-      setTickets(data.tickets);
-      setUsers(data.users);
+      try {
+        const response = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment');
+        const data = await response.json();
+
+        // Handle null or undefined values
+        setTickets(data.tickets || []); // Default to empty array
+        setUsers(data.users || []); // Default to empty array
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+        setTickets([]); // Set to empty array on error
+        setUsers([]); // Set to empty array on error
+      } finally {
+        setIsLoading(false); // Set loading to false after fetching
+      }
     };
 
     fetchData();
@@ -28,7 +38,6 @@ const App = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close the dropdown if the click is outside of it
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
       }
@@ -42,28 +51,42 @@ const App = () => {
   }, []);
 
   const toggleDropdown = (event) => {
-    event.stopPropagation(); // Prevent click from propagating to document
-    setDropdownOpen(prevState => !prevState); // Toggle dropdown state
+    event.stopPropagation();
+    setDropdownOpen(prevState => !prevState);
   };
+
+  const handleGroupByChange = (value) => {
+    setGroupBy(value);
+    localStorage.setItem('groupBy', value); // Save to local storage
+  };
+
+  const handleSortByChange = (value) => {
+    setSortBy(value);
+    localStorage.setItem('sortBy', value); // Save to local storage
+  };
+
+  // Render loading state
+  if (isLoading) {
+    return <div>Loading...</div>; // Display loading message while fetching
+  }
 
   return (
     <div className="app">
-      {/* Navigation Bar */}
       <nav className="navbar">
-        <div className="navbar-item" onClick={toggleDropdown}>
+        <div className="navbar-item1" onClick={toggleDropdown}>
           <img src={display} alt="Display" />
           <span>Display</span>
-          <img src={down} alt="Dropdown" className={`dropdown-icon ${isDropdownOpen ? 'rotated' : ''}`} />
+          <img src={down} alt="Dropdown" className={`dropdown-icon1 ${isDropdownOpen ? 'rotated' : ''}`} />
         </div>
         {isDropdownOpen && (
           <div className="dropdown-menu" ref={dropdownRef}>
             <div className="dropdown-section">
               <span>Grouping</span>
-              <GroupBySelect value={groupBy} onChange={(e) => setGroupBy(e.target.value)} downIcon={down} />
+              <GroupBySelect value={groupBy} onChange={(e) => handleGroupByChange(e.target.value)} downIcon={down} />
             </div>
             <div className="dropdown-section">
               <span>Ordering</span>
-              <SortBySelect value={sortBy} onChange={(e) => setSortBy(e.target.value)} downIcon={down} />
+              <SortBySelect value={sortBy} onChange={(e) => handleSortByChange(e.target.value)} downIcon={down} />
             </div>
           </div>
         )}

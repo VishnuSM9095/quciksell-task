@@ -3,12 +3,12 @@ import Card from './card';
 import '../App.css';
 import '../card.css';
 import '../column.css';
-import threee from '../components/icons_FEtask/3 dot menu.svg';
 import todo from '../components/icons_FEtask/To-do.svg';
 import progresss from '../components/icons_FEtask/in-progress.svg';
 import completedd from '../components/icons_FEtask/Done.svg';
 import cancelled from '../components/icons_FEtask/Cancelled.svg';
 import backlog from '../components/icons_FEtask/Backlog.svg';
+import grey from '../components/icons_FEtask/greyy.svg';
 import SK from '../components/icons_FEtask/SK.svg';
 import S from '../components/icons_FEtask/S.png';
 import Y from '../components/icons_FEtask/Y_profile.png';
@@ -17,8 +17,11 @@ import A from '../components/icons_FEtask/A_profile.png';
 import low from '../components/icons_FEtask/Img - Low Priority.svg';
 import med from '../components/icons_FEtask/Img - Medium Priority.svg';
 import high from '../components/icons_FEtask/Img - High Priority.svg';
-import urgent from '../components/icons_FEtask/SVG - Urgent Priority grey.svg';
+import urgent from '../components/icons_FEtask/SVG - Urgent Priority colour.svg';
 import nop from '../components/icons_FEtask/No-priority.svg';
+import plus from '../components/icons_FEtask/add.svg';
+import three from '../components/icons_FEtask/3 dot menu.svg';
+
 
 const statusIcons = {
   'Todo': todo,
@@ -37,23 +40,46 @@ const priorityIcons = {
 };
 
 const userProfiles = {
-  'SK': SK,
-  'S': S,
-  'Y': Y,
-  'R': R,
-  'A': A
+  'Shankar Kumar': SK,
+  'Suresh': S,
+  'Yogesh': Y,
+  'Ramesh': R,
+  'Anoop sharma': A
 };
 
-const Column = ({ group, tickets, groupBy, users, groupData }) => {
+const Column = ({ group, tickets, groupBy, users }) => {
+  // Get the appropriate icon based on the grouping
   const groupIcon = groupBy === 'status' ? statusIcons[group] 
                   : groupBy === 'priority' ? priorityIcons[group] 
-                  : userProfiles[groupData?.profile];
+                  : null; // No icon for user grouping
+
+  // Find user details for the profile image
+  const user = users.find(user => user.name === group);
+  const userProfile = userProfiles[user?.name] || grey; // Get user profile picture
+  const availabilityClass = user?.available ? 'available' : 'unavailable'; // Check availability
+
+  // Count the total number of tickets
+  const ticketCount = tickets.length;
 
   return (
     <div className="column">
-      <div className="column-header">
-        {groupIcon && <img src={groupIcon} alt={group} className="group-icon" />}
-        <h2>{group}</h2>
+      <div className='head-col'>
+        <div className="column-header">
+          {groupIcon && <img src={groupIcon} alt={group} className="group-icon" />}
+          {groupBy === 'user' && userProfile && (
+            <div className="user-info">
+              <img src={userProfile} alt={user?.name} className="user-profile" />
+              <span className={`availability ${availabilityClass}`}></span>
+            </div>
+          )}
+          
+          <h2>{group} <span className="ticket-count">{ticketCount}</span></h2>
+          
+        </div>
+        <div className='right-set'>
+          <img src={plus} alt='pplus'></img>
+          <img src={three} alt='pplus'></img>
+        </div>
       </div>
       {tickets.map(ticket => (
         <Card key={ticket.id} ticket={ticket} groupBy={groupBy} users={users} />

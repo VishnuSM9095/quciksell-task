@@ -1,0 +1,56 @@
+/* App.css */
+
+.app {
+    padding: 20px;
+  }
+  
+  .navbar {
+    position: relative;
+  }
+  
+  .navbar-item1 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: max-content; /* Allow the dropdown width to adjust based on content */
+  }
+  
+  .dropdown-section {
+    margin: 10px 0;
+    padding: 10px;
+  }
+  
+  .grouping-dropdown {
+    display: flex;
+    flex-direction: column; /* Stack the GroupBySelect and its options vertically */
+  }
+  
+  .ordering-dropdown {
+    display: flex;
+    flex-direction: column; /* Stack the SortBySelect and its options vertically */
+  }
+  
+  .nested-dropdown {
+    position: absolute;
+    top: 100%; /* Position below the dropdown */
+    left: 0; /* Align to the left */
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1001; /* Ensure it appears above the dropdown */
+    width: max-content; /* Adjust based on content */
+    padding: 10px;
+  }
+  
+  .rotated {
+    transform: rotate(180deg); /* Rotate icon when dropdown is open */
+  }
+  

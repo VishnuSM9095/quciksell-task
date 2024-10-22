@@ -29,12 +29,14 @@ const Board = ({ tickets, users, groupBy, sortBy }) => {
     return acc;
   }, {});
 
-  // Ensure "Done" and "Cancelled" columns are always present
-  if (!sortedGroupedTickets["Done"]) {
-    sortedGroupedTickets["Done"] = [];
-  }
-  if (!sortedGroupedTickets["Cancelled"]) {
-    sortedGroupedTickets["Cancelled"] = [];
+  // Ensure "Done" and "Cancelled" columns are present only when grouping by status
+  if (groupBy === 'status') {
+    if (!sortedGroupedTickets["Done"]) {
+      sortedGroupedTickets["Done"] = [];
+    }
+    if (!sortedGroupedTickets["Cancelled"]) {
+      sortedGroupedTickets["Cancelled"] = [];
+    }
   }
 
   const orderedKeys = groupBy === 'priority' 

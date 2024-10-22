@@ -1,0 +1,40 @@
+.card-id span{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    
+}
+.card-id{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tag-button span{
+    font-weight: 600!important;
+    margin-top: 1px;
+    font-size: smaller;
+    margin-left: 4px;
+}
+.priority-icon{
+    padding: 1.5px;
+    border: 0.5px solid lightgrey;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+.card-title {
+    display: flex;
+    align-items: center;
+}
+  
+.title-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word; /* Ensures long words are broken properly */
+}
+.card-title{
+    align-items: flex-start!important;
+    justify-items: center;
+}

@@ -20,7 +20,6 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    margin: 10px;
     background-color: #fff;
     position: relative;
   }
@@ -30,7 +29,7 @@
     justify-content: space-between;
     align-items: center;
   }
-  
+ 
   .menu-icon {
     width: 16px;
     height: 16px;
@@ -41,11 +40,13 @@
     display: flex;
     align-items: center;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .status-icon {
-    width: 20px;
-    height: 20px;
+    margin-top: 1px;
+    width: 13px;
+    height: 13px;
     margin-right: 5px;
   }
   
@@ -70,5 +71,30 @@
   .card-tag {
     display: flex;
     align-items: center;
+  }
+  .user-profile {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .availability {
+    width: 8px; /* Adjust size for the availability dot */
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0; /* Align with bottom */
+    right: 0; /* Align with right */
+    border: 2px solid white; /* Optional: add a border for better visibility */
+  }
+  
+  .available {
+    background-color: green;
+  }
+  
+  .unavailable {
+    background-color: lightgrey;
   }
   
