@@ -21,7 +21,6 @@
     background: white;
     border: 1px solid #ccc;
     z-index: 1000;
-    width: max-content; /* Allow the dropdown width to adjust based on content */
   }
   
   .dropdown-section {

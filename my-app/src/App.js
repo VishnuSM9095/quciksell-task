@@ -85,7 +85,9 @@ const App = () => {
           </div>
         )}
       </nav>
-      <Board tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
+      <div className="board-container">
+        <Board tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
+      </div>
     </div>
   );
 };

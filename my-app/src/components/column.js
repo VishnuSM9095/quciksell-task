@@ -48,17 +48,14 @@ const userProfiles = {
 };
 
 const Column = ({ group, tickets, groupBy, users }) => {
-  // Get the appropriate icon based on the grouping
   const groupIcon = groupBy === 'status' ? statusIcons[group] 
                   : groupBy === 'priority' ? priorityIcons[group] 
-                  : null; // No icon for user grouping
+                  : null; 
 
-  // Find user details for the profile image
   const user = users.find(user => user.name === group);
-  const userProfile = userProfiles[user?.name] || grey; // Get user profile picture
-  const availabilityClass = user?.available ? 'available' : 'unavailable'; // Check availability
+  const userProfile = userProfiles[user?.name] || grey; 
+  const availabilityClass = user?.available ? 'available' : 'unavailable'; 
 
-  // Count the total number of tickets
   const ticketCount = tickets.length;
 
   return (

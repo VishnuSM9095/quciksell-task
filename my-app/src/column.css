@@ -43,9 +43,16 @@
 
 .user-info {
     position: relative;
+
     display: inline-block;
     margin-left: 10px;
     align-items: center;
+    
+}
+.user-info .availability{
+    height: 7px;
+    width: 7px;
+    border:1px solid white;
 }
 
 .card {
