@@ -12,7 +12,7 @@ const App = () => {
   const [groupBy, setGroupBy] = useState(localStorage.getItem('groupBy') || 'status');
   const [sortBy, setSortBy] = useState(localStorage.getItem('sortBy') || 'priority');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -20,19 +20,16 @@ const App = () => {
       try {
         const response = await fetch('https://api.quicksell.co/v1/internal/frontend-assignment');
         const data = await response.json();
-
-        // Handle null or undefined values
-        setTickets(data.tickets || []); // Default to empty array
-        setUsers(data.users || []); // Default to empty array
+        setTickets(data.tickets || []);
+        setUsers(data.users || []);
       } catch (error) {
         console.error("Error fetching data: ", error);
-        setTickets([]); // Set to empty array on error
-        setUsers([]); // Set to empty array on error
+        setTickets([]);
+        setUsers([]);
       } finally {
-        setIsLoading(false); // Set loading to false after fetching
+        setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -42,9 +39,7 @@ const App = () => {
         setDropdownOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -57,17 +52,16 @@ const App = () => {
 
   const handleGroupByChange = (value) => {
     setGroupBy(value);
-    localStorage.setItem('groupBy', value); // Save to local storage
+    localStorage.setItem('groupBy', value);
   };
 
   const handleSortByChange = (value) => {
     setSortBy(value);
-    localStorage.setItem('sortBy', value); // Save to local storage
+    localStorage.setItem('sortBy', value);
   };
 
-  // Render loading state
   if (isLoading) {
-    return <div>Loading...</div>; // Display loading message while fetching
+    return <div>Loading...</div>;
   }
 
   return (
@@ -91,7 +85,6 @@ const App = () => {
           </div>
         )}
       </nav>
-      {/* Board */}
       <Board tickets={tickets} users={users} groupBy={groupBy} sortBy={sortBy} />
     </div>
   );

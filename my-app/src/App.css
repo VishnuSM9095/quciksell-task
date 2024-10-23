@@ -175,17 +175,20 @@ select {
 
 /* Column styles */
 .column {
+  display: flex;
+  flex-direction: column;
   background-color: #ffffff00;
   border-radius: 5px;
-  padding: 10px;
+  padding: 7px;
   margin-right: 10px;
   width: 30%;
 }
 
+
 /* Card styles */
 .card {
   background-color: white;
-  width: 40vh; /* Set width to 80px */
+  width: 35vh; /* Set width to 80px */
   height: 15vh; /* Set height to 40px */
   border: 1px solid #f0ebeb; /* Optional: add a border for visibility */
   border-radius: 4px; /* Optional: add rounded corners */
@@ -244,7 +247,64 @@ select {
   fill: lightgrey;
 }
 
+/* Responsive Styles */
+@media (max-width: 1250px) {
+  .card {
 
+    width: 90%; /* Reduce card width */
+  }
 
+  .column {
+    width: calc(45% - 10px); /* Two columns */
+    margin-right: 5px; /* Reduce gap */
+  }
+}
 
+@media (max-width: 1100px) {
+  .card {
+    width: 80%; /* Further reduce card width */
+  }
 
+  .column {
+    width: calc(45% - 10px); /* Maintain two columns */
+  }
+}
+
+@media (max-width: 1000px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 70%; /* More reduction for card width */
+  }
+
+  .column {
+    width: calc(30% - 10px); /* Maintain three columns */
+  }
+  .column card{
+    align-items: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .board {
+    flex-direction: column; /* Switch to vertical stacking */
+  }
+
+  .column {
+    width: 100%; /* Stack columns */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  .card {
+    height: auto; /* Let height adjust based on content */
+    width: 90%; /* Adjust card width for smaller screens */
+  }
+}
+
+@media (max-width: 800px) {
+  
+
+  .card {
+    width: 90%; /* Further reduce card width for small screens */
+  }
+}
